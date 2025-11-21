@@ -30,7 +30,7 @@ export const debounceSearch = (fn: (value: string) => void) => {
 
   return (value: string) => {
     clearTimeout(timeoutId);
-    timeoutId = setTimeout(() => fn(value), 500);
+    timeoutId = window.setTimeout(() => fn(value), 500);
   };
 };
 

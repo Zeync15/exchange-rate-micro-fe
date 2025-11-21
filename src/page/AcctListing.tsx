@@ -13,8 +13,9 @@ import { CurrencyDropList, getExchangeRate } from "../mock/exchangeRate";
 import { filterAccounts, formatAcctNumber } from "../utils";
 import ExchangeRate from "../utils/ExchangeRate";
 
+const DownloadButton = lazy(() => import("remote_app/DownloadButton"));
+
 const AcctListing = () => {
-  const DownloadButton = lazy(() => import("remote_app/DownloadButton"));
   const [selectedCompany, setSelectedCompany] = useState<number | null>(null);
 
   const [selectedCurrency, setSelectedCurrency] = useState<CurrencyRes>({
