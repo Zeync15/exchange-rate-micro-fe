@@ -1,5 +1,5 @@
 import type { ColumnDef } from "@tanstack/react-table";
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import type { AcctListItem } from "../api/acctList";
 import type { CurrencyRes } from "../api/exchangeRate";
 import Accordion from "../component/Accordion";
@@ -14,6 +14,7 @@ import { filterAccounts, formatAcctNumber } from "../utils";
 import ExchangeRate from "../utils/ExchangeRate";
 
 const AcctListing = () => {
+  const DownloadButton = lazy(() => import("remote_app/DownloadButton"));
   const [selectedCompany, setSelectedCompany] = useState<number | null>(null);
 
   const [selectedCurrency, setSelectedCurrency] = useState<CurrencyRes>({
@@ -159,6 +160,12 @@ const AcctListing = () => {
           selectedCurrency={selectedCurrency}
           onChange={handleCurrencyChange}
         />
+      </div>
+
+      <div className="flex justify-end">
+        <Suspense fallback={<div>Loading micro frontend...</div>}>
+          <DownloadButton />
+        </Suspense>
       </div>
 
       {selectedCompany === null ? (

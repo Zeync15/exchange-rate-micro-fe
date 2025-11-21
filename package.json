@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview --port 5000 --strictPort",
+    "serve": "npm run build && npm run preview"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.8",
@@ -20,6 +21,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
+    "@originjs/vite-plugin-federation": "^1.4.1",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "@vitejs/plugin-react": "^4.4.1",
